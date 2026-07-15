@@ -1,0 +1,6 @@
+[submodule "child_1_repo_4487_fourth_case"]
+	path = child_1_repo_4487_fourth_case
+	url = https://github.com/lakshya-blitzy/child_1_repo_4487_fourth_case.git
+[submodule "child_2_repo_4487_fourth_case"]
+	path = child_2_repo_4487_fourth_case
+	url = https://github.com/lakshya-blitzy/child_2_repo_4487_fourth_case.git
