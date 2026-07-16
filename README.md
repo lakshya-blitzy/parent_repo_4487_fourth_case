@@ -1,36 +1,36 @@
 # parent_repo_4487_fourth_case
 
-> A Git submodule **superproject** that aggregates two child repositories — `child_1_repo_4487_fourth_case` and `child_2_repo_4487_fourth_case` — into a single, version-pinned workspace (Source: .gitmodules:L1-L6).
+> A Git submodule **superproject** that aggregates two child repositories — `child_1_repo_4487_fourth_case` and `child_2_repo_4487_fourth_case` — each declared as a submodule by path and upstream URL (Source: .gitmodules:L1-L6).
 
-This repository is a **composition of Git submodules**, not a standalone runnable application. As captured, it holds repository/tooling configuration and performance-testing documentation. Please read the [Overview](#📖-overview) first — it contains an important, up-front note about the originally-requested Node.js server (`server.js`), which **is not present** in the repository as captured.
+This repository is a **composition of Git submodules**, not a standalone runnable application (Source: .gitmodules:L1-L6). As captured, it holds repository/tooling configuration (Source: .eslintrc.js:L14, .editorconfig:L1-L16) and performance-testing *documentation* in its `child_1` submodule (Source: child_1_repo_4487_fourth_case/README.md:L1, child_1_repo_4487_fourth_case/README (2).md:L1). Please read the [Overview](#-overview) first — it contains an important, up-front note about the originally-requested Node.js server (`server.js`), which **is not present** in the repository as captured.
 
 ---
 
 ## 📑 Table of Contents
 
-- [📖 Overview](#📖-overview)
-  - [🧩 Submodule Composition](#🧩-submodule-composition)
-- [✅ Prerequisites](#✅-prerequisites)
-- [⚙️ Setup and Installation](#⚙️-setup-and-installation)
-  - [🔑 Environment Variables](#🔑-environment-variables)
-- [▶️ Usage and Running the Server](#▶️-usage-and-running-the-server)
-- [🌐 API Documentation](#🌐-api-documentation)
-- [🧭 Code Walkthrough](#🧭-code-walkthrough)
-- [🚢 Deployment Guide](#🚢-deployment-guide)
-- [📂 Project Structure](#📂-project-structure)
-- [🛠 Troubleshooting](#🛠-troubleshooting)
-- [📄 License and Contributing](#📄-license-and-contributing)
+- [📖 Overview](#-overview)
+  - [🧩 Submodule Composition](#-submodule-composition)
+- [✅ Prerequisites](#-prerequisites)
+- [⚙ Setup and Installation](#-setup-and-installation)
+  - [🔑 Environment Variables](#-environment-variables)
+- [▶ Usage and Running the Server](#-usage-and-running-the-server)
+- [🌐 API Documentation](#-api-documentation)
+- [🧭 Code Walkthrough](#-code-walkthrough)
+- [🚢 Deployment Guide](#-deployment-guide)
+- [📂 Project Structure](#-project-structure)
+- [🛠 Troubleshooting](#-troubleshooting)
+- [📄 License and Contributing](#-license-and-contributing)
 
 ---
 
 ## 📖 Overview
 
-`parent_repo_4487_fourth_case` is a **Git submodule superproject**. Its purpose is to compose and version-pin two child repositories as submodules so they can be cloned and tracked together (Source: .gitmodules:L1-L6):
+`parent_repo_4487_fourth_case` is a **Git submodule superproject**. Its purpose is to compose two child repositories as submodules — declared by path and upstream URL — so they can be cloned and tracked together (Source: .gitmodules:L1-L6):
 
-- **`child_1_repo_4487_fourth_case`** → `https://github.com/lakshya-blitzy/child_1_repo_4487_fourth_case.git` — contains performance-testing documentation (a one-click Locust load-test guide and a Python/Pytest "API Performance Test Framework") plus tooling configuration and a further nested submodule (Source: child_1_repo_4487_fourth_case/README.md, child_1_repo_4487_fourth_case/README (2).md, child_1_repo_4487_fourth_case/.gitmodules:L1-L3).
-- **`child_2_repo_4487_fourth_case`** → `https://github.com/lakshya-blitzy/child_2_repo_4487_fourth_case.git` — contains Babel transpiler configuration modules and a Watchman config (Source: child_2_repo_4487_fourth_case/babel.config.js:L3, child_2_repo_4487_fourth_case/babel.config-react-compiler.js:L15).
+- **`child_1_repo_4487_fourth_case`** — declared with its path and URL `https://github.com/lakshya-blitzy/child_1_repo_4487_fourth_case.git` (Source: .gitmodules:L1-L3) — contains performance-testing *documentation*: a one-click Locust load-test guide (Source: child_1_repo_4487_fourth_case/README.md:L1) and a Python/Pytest "API Performance Test Framework" guide (Source: child_1_repo_4487_fourth_case/README (2).md:L1), plus tooling configuration (`.eslintrc.js`) and a further nested submodule (Source: child_1_repo_4487_fourth_case/.gitmodules:L1-L3).
+- **`child_2_repo_4487_fourth_case`** — declared with its path and URL `https://github.com/lakshya-blitzy/child_2_repo_4487_fourth_case.git` (Source: .gitmodules:L4-L6) — contains Babel transpiler configuration modules (Source: child_2_repo_4487_fourth_case/babel.config.js:L3, child_2_repo_4487_fourth_case/babel.config-react-compiler.js:L15-L18) and a Watchman configuration file (Source: child_2_repo_4487_fourth_case/.watchmanconfig:L1).
 
-At the root, the superproject itself only carries repository/tooling configuration files (`.gitmodules`, `.editorconfig`, `.eslintrc.js`, `.eslintignore`, `.blitzyignore`) and this `README.md`. There is **no build system, no CI pipeline, no test runner configured at the root, and no runnable server** in the repository as captured.
+At the root, the superproject itself only carries repository/tooling configuration files — `.gitmodules` (Source: .gitmodules:L1-L6), `.editorconfig` (Source: .editorconfig:L1-L16), `.eslintrc.js` (Source: .eslintrc.js:L14), `.eslintignore` (Source: .eslintignore:L1), and `.blitzyignore` (Source: .blitzyignore:L1) — plus this `README.md`. There is **no build system, no CI pipeline, no test runner configured at the root, and no runnable server**: an exhaustive search of the working tree found no `package.json`/manifest and no `server.js` (see the note below).
 
 > ### ⚠️ Important note on the requested `server.js`
 >
@@ -62,22 +62,23 @@ Because there is **no `package.json` or any other dependency manifest** in the r
 | Prerequisite | Why it is needed | Source |
 |--------------|------------------|--------|
 | **Git** (with submodule support) | Required to clone the superproject and initialize/update its submodules | Source: .gitmodules:L1-L6, child_1_repo_4487_fourth_case/.gitmodules:L1-L3 |
-| **Python** | Required only to run the performance-testing tooling described by the `child_1` submodule (e.g., `python run_tests.py`; the Windows Locust batch script bootstraps Python itself) | Source: child_1_repo_4487_fourth_case/README (2).md, child_1_repo_4487_fourth_case/README.md |
+| **Python** _(reference only)_ | Would be required to run the performance-testing workflows *described* by the `child_1` submodule READMEs (a Windows Locust batch runner and a `python run_tests.py` framework). **Note:** the scripts and manifests those READMEs reference (e.g., `run_locust.bat`, `locustfile.py`, `run_tests.py`, `requirements.txt`) are **not present** in the child worktree as captured, so these are documentation references, not currently-runnable tools | Source: child_1_repo_4487_fourth_case/README.md:L8-L36, child_1_repo_4487_fourth_case/README (2).md:L31-L68 |
 | **Node.js** _(contingent)_ | Not required by the repository as captured. It would only become a prerequisite once a `server.js` and a Node.js manifest are added. The existing `.eslintrc.js`/`babel.config.js` files are Node-based *tooling* configs, but no manifest pins a Node version | Source: .eslintrc.js:L14, child_2_repo_4487_fourth_case/babel.config.js:L3 |
 
 > **No Node.js version is asserted here** because the repository contains no manifest (`package.json`, `.nvmrc`, `engines`, etc.) from which to derive one.
 
 ---
 
-## ⚙️ Setup and Installation
+## ⚙ Setup and Installation
 
-This section covers the **real, verifiable** setup for this repository — a submodule superproject (Source: .gitmodules:L1-L6). Application install/build steps are not applicable yet (see the note in the [Overview](#📖-overview)).
+This section covers the **real, verifiable** setup for this repository — a submodule superproject (Source: .gitmodules:L1-L6). Application install/build steps are not applicable yet (see the note in the [Overview](#-overview)).
 
-**Option A — fresh clone (recommended):** clone the superproject and all submodules in a single step.
+**Option A — fresh clone:** clone the superproject together with all of its submodules in a single step. This repository does not declare its own remote URL in any tracked file (`.gitmodules` declares only the two child submodule URLs — Source: .gitmodules:L1-L6), so **no canonical clone URL is asserted here**. Replace `YOUR_SUPERPROJECT_URL` below with the actual superproject URL provided through your access channel (accessing it may require credentials from that channel).
 
 ```bash
-# Clone the superproject together with every submodule (including nested ones)
-git clone --recurse-submodules <repository-url> parent_repo_4487_fourth_case
+# Substitute YOUR_SUPERPROJECT_URL with the real superproject URL from your access channel.
+# This clones the superproject together with every submodule (including nested ones).
+git clone --recurse-submodules YOUR_SUPERPROJECT_URL parent_repo_4487_fourth_case
 cd parent_repo_4487_fourth_case
 ```
 
@@ -90,11 +91,11 @@ git submodule update --init --recursive
 
 The `--recursive` flag ensures the nested submodule declared by `child_1_repo_4487_fourth_case` is also fetched (Source: child_1_repo_4487_fourth_case/.gitmodules:L1-L3).
 
-There is currently **no dependency-installation step** (e.g., `npm install`, `pip install -r requirements.txt`) at the root, because the root defines no manifest. Dependency installation for the child performance-testing tooling is handled by that tooling's own documented workflows (Source: child_1_repo_4487_fourth_case/README (2).md).
+There is currently **no dependency-installation step** (e.g., `npm install`, `pip install -r requirements.txt`) at the root, because the root defines no manifest. The `child_1` submodule READMEs *describe* performance-testing workflows that would install their own dependencies, but the scripts and manifests they reference (`run_tests.py`, `requirements.txt`, `run_locust.bat`, etc.) are **not present** in the child worktree as captured — they are documentation references, not runnable artifacts (Source: child_1_repo_4487_fourth_case/README (2).md:L31-L40, child_1_repo_4487_fourth_case/README (2).md:L66-L76).
 
 ### 🔑 Environment Variables
 
-**No application environment variables are defined in the repository as captured.** There is no `.env` file and no configuration module at the root, because there is no application server (`server.js`) to read them. The table below is a **placeholder** to be populated once a server reads any variables.
+**No application environment variables are defined in the repository as captured.** There is no `.env` file and **no application configuration module that reads environment variables** at the root, because there is no application server (`server.js`) to consume them. (The root *does* contain developer-*tooling* configuration modules — for example `.eslintrc.js`, which exports an ESLint configuration object (Source: .eslintrc.js:L14) — but these configure tooling, not application runtime, and read no application environment variables.) The table below is a **placeholder** to be populated once a server reads any variables.
 
 | Name | Purpose | Default |
 |------|---------|---------|
@@ -104,9 +105,9 @@ There is currently **no dependency-installation step** (e.g., `npm install`, `pi
 
 ---
 
-## ▶️ Usage and Running the Server
+## ▶ Usage and Running the Server
 
-**There is currently no runnable server or start command in this repository** — there is no `server.js` and no `package.json` scripts to invoke (confirmed by exhaustive search; see the [Overview](#📖-overview)).
+**There is currently no runnable server or start command in this repository** — there is no `server.js` and no `package.json` scripts to invoke (confirmed by exhaustive search; see the [Overview](#-overview)).
 
 **Contingent (not yet applicable):** once a Node.js server is added, the run command will look like one of the following. These are shown only to illustrate the intended shape and **must not** be treated as working commands today:
 
@@ -117,12 +118,12 @@ node server.js
 npm start
 ```
 
-**What can be exercised today** lives inside the child submodules, via *their own* documented workflows (cross-referenced here without duplicating their content):
+**Referenced child workflows (documentation only — not runnable as captured):** the `child_1` submodule READMEs *describe* two performance-testing workflows, but the scripts they reference are **absent** from the child worktree as captured, so these are documentation references rather than executable tools today:
 
-- **Locust one-click load test (Windows):** described in `child_1_repo_4487_fourth_case/README.md` (Source: child_1_repo_4487_fourth_case/README.md).
-- **API Performance Test Framework (`python run_tests.py`):** described in `child_1_repo_4487_fourth_case/README (2).md` (Source: child_1_repo_4487_fourth_case/README (2).md).
+- **Locust one-click load test (Windows):** described in `child_1_repo_4487_fourth_case/README.md`, which references a `run_locust.bat` / `locustfile.py` / `requirements.txt` / `report/` set that is not present in the worktree (Source: child_1_repo_4487_fourth_case/README.md:L8-L36).
+- **API Performance Test Framework:** described in `child_1_repo_4487_fourth_case/README (2).md`, which references `run_tests.py`, `config.json`, `requirements.txt`, and `tests/test_perf.py` — none of which are present in the worktree (Source: child_1_repo_4487_fourth_case/README (2).md:L31-L68).
 
-Refer to each submodule's README for its exact prerequisites and run steps.
+Refer to each submodule's README for what those workflows *would* do; the referenced scripts must be supplied before they can be run.
 
 ---
 
@@ -144,9 +145,9 @@ The user's request included an annotated walkthrough of `server.js` cross-linked
 
 For completeness, here is a factual, high-level tour of the code that **does** exist today — all of which is **tooling/configuration, not application logic**:
 
-- **`.eslintrc.js` (root)** — a large, React-derived ESLint policy that exports a configuration object (via `module.exports`); it imports helper paths via `require('./scripts/shared/pathsByLanguageVersion')` (a script that is itself absent from the tree) and contains **no application functions** (Source: .eslintrc.js:L6, .eslintrc.js:L14).
+- **`.eslintrc.js` (root)** — a large, React-derived ESLint policy (it configures the `react`/`react-internal` plugins and dozens of `react/*` rules — Source: .eslintrc.js:L29-L30, .eslintrc.js:L187-L218) that exports a configuration object literal via `module.exports` (Source: .eslintrc.js:L14); it imports helper paths via `require('./scripts/shared/pathsByLanguageVersion')` — a script that is itself absent from the tree (Source: .eslintrc.js:L6) — and defines **no application functions** of its own.
 - **`child_2_repo_4487_fourth_case/babel.config.js`** — exports a Babel plugin list (transpiler configuration), not an application (Source: child_2_repo_4487_fourth_case/babel.config.js:L3).
-- **`child_2_repo_4487_fourth_case/babel.config-react-compiler.js`** — re-exports the plugin list from a sibling `./babel.config-ts` module (which is absent from the tree) (Source: child_2_repo_4487_fourth_case/babel.config-react-compiler.js:L15).
+- **`child_2_repo_4487_fourth_case/babel.config-react-compiler.js`** — requires a sibling `./babel.config-ts` module, which is absent from the tree (Source: child_2_repo_4487_fourth_case/babel.config-react-compiler.js:L15), and re-exports that module's plugin list via `module.exports = { plugins: baseConfig.plugins }` (Source: child_2_repo_4487_fourth_case/babel.config-react-compiler.js:L17-L18).
 - **`child_1_repo_4487_fourth_case/Nested_child_repo_4487_fourth_case/600Kloc.py`** — a three-line, top-level script (no functions or classes) that writes a CSV fixture by looping and appending rows (Source: child_1_repo_4487_fourth_case/Nested_child_repo_4487_fourth_case/600Kloc.py:L1-L3).
 
 > When `server.js` is added, this section will be replaced with an annotated tour of its structure — module banner, middleware, route handlers, and lifecycle/bootstrap code — each paragraph cross-linked to the corresponding JSDoc block in the source.
@@ -158,7 +159,7 @@ For completeness, here is a factual, high-level tour of the code that **does** e
 **No deployment is defined in the repository as captured.** There is no build artifact, no start script, no declared port, no container definition (e.g., `Dockerfile`), and no process-manager configuration, because there is no deployable server. The skeleton below is a **clearly-labeled placeholder** to be completed once a deployable server exists — no Docker, PM2, or cloud specifics are asserted as real.
 
 1. **Build** _(to be defined)_ — the build/compile step (if any) once a manifest and build tooling exist.
-2. **Environment configuration** _(to be defined)_ — the environment variables and config files the server requires (see [Environment Variables](#🔑-environment-variables)).
+2. **Environment configuration** _(to be defined)_ — the environment variables and config files the server requires (see [Environment Variables](#-environment-variables)).
 3. **Process management** _(to be defined)_ — how the process is supervised (e.g., a process manager or an init system).
 4. **Containerization** _(to be defined)_ — the container image and runtime settings, if containerized.
 5. **Cloud / host target** _(to be defined)_ — the target platform(s) and the deploy command(s).
@@ -206,7 +207,7 @@ parent_repo_4487_fourth_case/
 |---------|--------------|------------|
 | Submodule folders (`child_1_repo_4487_fourth_case/`, `child_2_repo_4487_fourth_case/`) are empty after cloning | The repository was cloned without `--recurse-submodules` | Run `git submodule update --init --recursive` from the repository root (Source: .gitmodules:L1-L6, child_1_repo_4487_fourth_case/.gitmodules:L1-L3) |
 | The nested submodule under `child_1_repo_4487_fourth_case/` is missing | Submodules were initialized non-recursively | Re-run with the `--recursive` flag: `git submodule update --init --recursive` (Source: child_1_repo_4487_fourth_case/.gitmodules:L1-L3) |
-| Looking for server start / API / deploy commands and finding none | There is no `server.js` or `package.json` in the repository as captured | These instructions are **pending** the addition of a `server.js` (and its Node.js manifest); see the [Overview](#📖-overview) |
+| Looking for server start / API / deploy commands and finding none | There is no `server.js` or `package.json` in the repository as captured | These instructions are **pending** the addition of a `server.js` (and its Node.js manifest); see the [Overview](#-overview) |
 | A `*.csv` file appears to be ignored by tooling | `.blitzyignore` excludes all CSV files from inspection/tooling | This is expected behavior (Source: .blitzyignore:L1) |
 
 ---
