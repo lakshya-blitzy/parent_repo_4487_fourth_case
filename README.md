@@ -73,6 +73,12 @@ Because there is **no `package.json` or any other dependency manifest** in the r
 
 This section covers the **real, verifiable** setup for this repository — a submodule superproject (Source: .gitmodules:L1-L6). Application install/build steps are not applicable yet (see the note in the [Overview](#-overview)).
 
+> **🔒 Submodule safety — read before cloning recursively.** Both Option A and Option B initialize **every declared submodule automatically**, including the nested submodule under `child_1_repo_4487_fourth_case/`. Because recursive initialization acts on the contents of each `.gitmodules` file, take these precautions before running it — especially against a repository you did not author or do not fully trust:
+>
+> - **Verify the sources first.** Confirm the superproject URL and every submodule URL are the ones you expect. The root `.gitmodules` declares only the two first-party child submodule URLs under `github.com/lakshya-blitzy/` (Source: .gitmodules:L1-L6), and a further nested submodule is declared inside `child_1` (Source: child_1_repo_4487_fourth_case/.gitmodules:L1-L3); inspect each layer.
+> - **Use a maintained, patched Git client.** Keep Git current: the fix for the recursive-clone submodule vulnerability CVE-2025-48384 shipped in Git 2.50.1 and the backported patch releases for older supported branches. An unpatched client can be induced by a malicious `.gitmodules` to write files outside the intended directory during a recursive clone.
+> - **For untrusted repositories, do not recurse in one step.** Clone without `--recurse-submodules` first, inspect each `.gitmodules` layer (root and any nested submodule) for unexpected paths or URLs, then initialize only the submodules you have verified — for example `git submodule update --init <path>` per approved submodule instead of a blanket `--recursive`.
+
 **Option A — fresh clone:** clone the superproject together with all of its submodules in a single step. This repository does not declare its own remote URL in any tracked file (`.gitmodules` declares only the two child submodule URLs — Source: .gitmodules:L1-L6), so **no canonical clone URL is asserted here**. Replace `YOUR_SUPERPROJECT_URL` below with the actual superproject URL provided through your access channel (accessing it may require credentials from that channel).
 
 ```bash
@@ -209,6 +215,8 @@ parent_repo_4487_fourth_case/
 | The nested submodule under `child_1_repo_4487_fourth_case/` is missing | Submodules were initialized non-recursively | Re-run with the `--recursive` flag: `git submodule update --init --recursive` (Source: child_1_repo_4487_fourth_case/.gitmodules:L1-L3) |
 | Looking for server start / API / deploy commands and finding none | There is no `server.js` or `package.json` in the repository as captured | These instructions are **pending** the addition of a `server.js` (and its Node.js manifest); see the [Overview](#-overview) |
 | A `*.csv` file appears to be ignored by tooling | `.blitzyignore` excludes all CSV files from inspection/tooling | This is expected behavior (Source: .blitzyignore:L1) |
+
+> **🔒 Submodule safety reminder:** the `git submodule update --init --recursive` resolutions above initialize **every** declared submodule, including nested ones. Before running them against a repository you did not author or do not fully trust, follow the safety steps in [Setup and Installation](#-setup-and-installation): verify the superproject and every `.gitmodules` submodule URL, use a maintained/patched Git client (see the CVE-2025-48384 note there), and for untrusted sources clone non-recursively first, inspect each `.gitmodules` layer, then initialize only the submodules you have verified.
 
 ---
 
