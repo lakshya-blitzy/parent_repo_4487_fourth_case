@@ -32,7 +32,7 @@ This repository is a **composition of Git submodules**, not a standalone runnabl
 
 At the root, the superproject itself only carries repository/tooling configuration files — `.gitmodules` (Source: .gitmodules:L1-L6), `.editorconfig` (Source: .editorconfig:L1-L16), `.eslintrc.js` (Source: .eslintrc.js:L14), `.eslintignore` (Source: .eslintignore:L1), and `.blitzyignore` (Source: .blitzyignore:L1) — plus this `README.md`. There is **no build system, no CI pipeline, no test runner configured at the root, and no runnable server**: an exhaustive search of the working tree found no `package.json`/manifest and no `server.js` (see the note below).
 
-> ### ⚠️ Important note on the requested `server.js`
+> ### ⚠ Important note on the requested `server.js`
 >
 > This README was requested alongside JSDoc documentation, API documentation, a deployment guide, and a code walkthrough for a Node.js `server.js`. **No `server.js` (and no `package.json` or any other Node.js/language manifest) exists anywhere in this repository** — this was confirmed by an exhaustive search of the working tree (no `server.js`, no `app.js`, no `index.js`, no `main.js`, no `*.mjs`/`*.cjs`, and no `package.json`/lockfile).
 >
